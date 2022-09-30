@@ -11,8 +11,10 @@ export class HttpService {
     private http: HttpClient
   ) { }
 
+  //Funções para consumir a API
+  
   getPokemons(){
-    return this.http.get('https://pokeapi.co/api/v2/pokemon?limit=40');
+    return this.http.get('https://pokeapi.co/api/v2/pokemon');
   }
 
   getInfoPokemons(id: number){

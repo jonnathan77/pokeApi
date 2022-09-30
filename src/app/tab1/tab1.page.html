@@ -13,31 +13,32 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-row>
-    <h1><strong>Pokemons:</strong></h1>
-  </ion-row>
+  <ion-col col-12 style="display:flex">
+    <ion-row>
+      <h1><strong>Pokemons:</strong></h1>
+    </ion-row>
+  </ion-col>
 
-  <ion-card *ngFor="let pokemon of pokemons; let i = index">
-    <ion-col style="display: flex;">
-      <ion-col col-6>
+  <ion-card *ngFor="let pokemon of pokemons; let i = index" style="display:flex;">
+    <ion-col col-12 style="display:flex;">
 
-        <ion-item button style="width: 100%;" (click)="showPokemon(i + 1)">
-          <h3 [innerText]="pokemon.name"></h3>
+      <ion-col col-6 style="display:flex;">
+        <ion-item style="width: 100%;">
+          <h3 class="texto1" [innerText]="pokemon.name"></h3>
         </ion-item>
       </ion-col>
 
-      <ion-col>
-        <ion-fab-button [disabled]="disabled">
-          <ion-icon name="add"></ion-icon>
+      <ion-col col-6 style="display:flex; align-items: center; justify-content: end;">
+        <ion-button [routerLink]="['/detalhes']" (click)="showDetalhes(i + 1)"
+        style="display:flex; align-items: center; justify-content: center; margin-right: 15px;">Detalhes
+        </ion-button>
+
+        <ion-fab-button (click)="showDetalhes(i + 1)" [disabled]="disabled">
+          <ion-icon name="star-outline"></ion-icon>
         </ion-fab-button>
       </ion-col>
 
-      <ion-col col-4 style="display:flex; align-items: end; justify-content: end;">
-        <ion-button>Default</ion-button>
-      </ion-col>
     </ion-col>
-
-
-  </ion-card> 
+  </ion-card>
 
 </ion-content>
