@@ -29,7 +29,7 @@
       </ion-col>
 
       <ion-col col-6 style="display:flex; align-items: center; justify-content: end;">
-        <ion-button [routerLink]="['/detalhes']" (click)="showDetalhes(i + 1)"
+        <ion-button [routerLink]="['/detalhes']" [queryParams]="(id)" (click)="onAboutPage(i + 1)"
         style="display:flex; align-items: center; justify-content: center; margin-right: 15px;">Detalhes
         </ion-button>
 

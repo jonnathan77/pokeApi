@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpService } from './../services/http.service';
-import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { NavController,MenuController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 import { DetalhesPage } from '../detalhes/detalhes';
 
 @Component({
@@ -17,24 +16,24 @@ export class Tab1Page implements OnInit {
   public handlerMessage = '';
   public roleMessage = '';
 
+  detalhes: any[] = [];
+  id: number;
+  anime: number;
+
   constructor(
     private httpService: HttpService,
     private alertController: AlertController,
-    public navCtrl: NavController
+    public navCtrl: NavController,
   ) {
-   
+
   }
 
-  ngOnInit(){
-    this.getPokemons()
+  ngOnInit() {
+    this.getPokemons();
   }
 
   getPokemons() {
     this.httpService.getPokemons().subscribe((data: any) => this.pokemons = data.results)
-  }
-
-  showDetalhes(id: number){
-    this.httpService.getInfoPokemons(id).subscribe((data: any) => this.info = data.results)
   }
 
   async presentAlert() {
@@ -57,8 +56,12 @@ export class Tab1Page implements OnInit {
     this.roleMessage = `Dismissed with role: ${role}`;
   }
 
-  onAboutPage() {
-    this.navCtrl.navigateForward('/DetalhesPage');
-  }   
+  onAboutPage(id: number) {
+    localStorage.setItem('id', JSON.stringify(id));
+    this.id = id;
+    //this.navCtrl.navigateForward('/DetalhesPage');
+    
+    console.log(id, this.id, 'info está aqui');
+  }
 
 }
