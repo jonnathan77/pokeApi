@@ -46,7 +46,7 @@ export class HttpService {
         map(pokemon => {
           return pokemon.map((poke, index) => {
             poke.image = this.getPokeImage(offset + index + 1);
-            poke.pokeIndex = offset + index + 1;
+            poke.pokeIndex = offset + index;
             return poke;
           });
         })

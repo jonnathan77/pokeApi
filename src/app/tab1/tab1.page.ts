@@ -24,7 +24,7 @@ export class Tab1Page implements OnInit {
   offset = 0;
   detalhes: any[] = [];
   id: number;
-  anime: number;
+  addList = [];
 
   constructor(
     private httpService: HttpService,
@@ -63,16 +63,25 @@ export class Tab1Page implements OnInit {
     this.roleMessage = `Dismissed with role: ${role}`;
   }
 
-  toggleSelected() {
-    this.selected = !this.selected;
-    this.selectedChange.emit(this.selected);
+  toggleItem(poke) {
+    const index = this.addList.indexOf(poke);
+    if (index >= 0) {
+      this.addList.splice(index, 1);
+      console.log('Removido dos favoritos');
+    } else {
+      this.addList.push(poke);
+      console.log('Adicionado aos favoritos');
+    }
+    console.log('Lista dos Favoritos', this.addList)
   }
+
+  getIcon(poke) {
+    return this.addList.indexOf(poke) >= 0 ? "star" : "add";
+  }
+  
   onAboutPage(id: number) {
     localStorage.setItem('id', JSON.stringify(id));
     this.id = id;
-    //this.navCtrl.navigateForward('/DetalhesPage');
-    
-    console.log(id, this.id, 'info está aqui');
   }
   
   carregarPokemons(loadMore = false, event?) {
