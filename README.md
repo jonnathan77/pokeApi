@@ -1,6 +1,4 @@
-# testeBSN
-
-Teste para a BSN Tecnologia
+# PokeApi
 
 A tarefa era proposta por consumir uma API de Pokemon e fazer um Layout com ele.
 
